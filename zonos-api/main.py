@@ -6,7 +6,7 @@ from zonos.utils import DEFAULT_DEVICE as device
 
 def main():
     # model = Zonos.from_pretrained("Zyphra/Zonos-v0.1-hybrid", device=device)
-    model = Zonos.from_pretrained("Zyphra/Zonos-v0.1-transformer", device=device)
+    model = Zonos.from_pretrained("Zyphra/Zonos-v0.1-transformer", device=device.type)
 
     wav, sampling_rate = torchaudio.load("assets/exampleaudio.mp3")
     speaker = model.make_speaker_embedding(wav, sampling_rate)

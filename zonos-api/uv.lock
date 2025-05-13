@@ -404,17 +404,6 @@ wheels = [
 ]
 
 [[package]]
-name = "human-presentator"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "zonos" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "zonos", git = "https://github.com/mitsaucepls/Zonos.git" }]
-
-[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -1672,3 +1661,14 @@ dependencies = [
     { name = "torchaudio" },
     { name = "transformers" },
 ]
+
+[[package]]
+name = "zonos-api"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "zonos" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "zonos", git = "https://github.com/mitsaucepls/Zonos.git" }]
