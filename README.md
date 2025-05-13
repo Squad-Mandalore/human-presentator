@@ -1,5 +1,9 @@
 # human presentor
 
+## General
+
+The project uses [uv](https://github.com/astral-sh/uv) as package manager.
+
 ## Description
 
 ### Voice recognition
