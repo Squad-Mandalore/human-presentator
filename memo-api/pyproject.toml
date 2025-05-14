@@ -9,4 +9,4 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-memo = { git = "https://github.com/memoavatar/memo.git" }
+memo = { git = "https://github.com/mitsaucepls/memo.git" }
