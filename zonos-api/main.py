@@ -4,6 +4,7 @@ from zonos.model import Zonos
 from zonos.conditioning import make_cond_dict
 from zonos.utils import DEFAULT_DEVICE as device
 
+
 def main():
     # model = Zonos.from_pretrained("Zyphra/Zonos-v0.1-hybrid", device=device)
     model = Zonos.from_pretrained("Zyphra/Zonos-v0.1-transformer", device=device.type)
