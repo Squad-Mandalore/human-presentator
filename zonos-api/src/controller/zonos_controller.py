@@ -6,8 +6,7 @@ import uuid
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
 from fastapi.responses import FileResponse
 
-from src.models.zonos_model import ZonosPostSchema
-from src.service.zonos_service import create_zonos_model
+from src.service.zonos_service import generate_zonos_audio
 
 router = APIRouter(
     prefix="/zonos",
@@ -17,7 +16,7 @@ router = APIRouter(
 )
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED) 
+@router.post("/", response_class=FileResponse, status_code=status.HTTP_200_OK) 
 def create_zonos_speech(
     audio_file: Annotated[UploadFile, File(...)],
     text: Annotated[str, Form(...)],
@@ -32,19 +31,10 @@ def create_zonos_speech(
         # Ausgabepfad definieren
         output_path = f"output_{uuid.uuid4()}.wav"
 
-        # Schema vorbereiten
-        zonos_schema = ZonosPostSchema(
-            audio_file_path=temp_input_path,
-            text=text,
-            language=language,
-            output_file_path=output_path
-        )
-
-
-        create_zonos_model(zonos_schema)
+        generate_zonos_audio(temp_input_path, text, language, output_path)
 
         return FileResponse(
-            path=zonos_schema.output_file_path,
+            path=output_path,
             media_type="audio/wav",
             filename="output.wav",
         )
@@ -54,6 +44,7 @@ def create_zonos_speech(
             detail=f"An error occurred: {str(e)}"
         )
     finally:
-        # Optional: Temporäre Datei nach Verwendung löschen
+        # Remove temporary input file
         if os.path.exists(temp_input_path):
             os.remove(temp_input_path)
+        # Remove output file after sending the response
