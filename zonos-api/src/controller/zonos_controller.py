@@ -47,4 +47,3 @@ def create_zonos_speech(
         # Remove temporary input file
         if os.path.exists(temp_input_path):
             os.remove(temp_input_path)
-        # Remove output file after sending the response
