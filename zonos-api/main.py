@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from zonos.utils import DEFAULT_DEVICE as device
 
 from src.controller import zonos_controller
 

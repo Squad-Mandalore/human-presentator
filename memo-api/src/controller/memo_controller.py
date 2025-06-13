@@ -20,11 +20,11 @@ def create_memo_video(
 ):
     try:
         # Temporäre Datei speichern
-        temp_audio_path = f"temp_input_{uuid.uuid4()}.wav"
+        temp_audio_path = f"temp_audio_{uuid.uuid4()}.wav"
         with open(temp_audio_path, "wb") as buffer:
             shutil.copyfileobj(audio_file.file, buffer)
 
-        temp_picture_path = f"temp_input_{uuid.uuid4()}.jpg"
+        temp_picture_path = f"temp_picture_{uuid.uuid4()}.jpg"
         with open(temp_picture_path, "wb") as buffer:
             shutil.copyfileobj(picture.file, buffer)
 
