@@ -37,7 +37,7 @@ def create_memo_video(
         output_path = f"{Path(__file__).parent}/assets/videos"
         output_path_file = f"{output_path}/{picture_filename}_{audio_filename}.mp4"
 
-        generate_from_picture_and_audio(audio_filename, picture_filename, output_path)
+        generate_from_picture_and_audio(audio_path_file, picture_path_file, output_path)
 
         return FileResponse(
             path=output_path_file,
