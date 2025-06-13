@@ -9,7 +9,7 @@ RUN apt-get update \
 
 # memo dependencies
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ffmpeg \
+ && apt-get install -y --no-install-recommends ffmpeg wget \
  && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml uv.lock .python-version ./
