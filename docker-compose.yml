@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  zonos-api:
+    build:
+      context: ./zonos-api
+    container_name: zonos-api
+    ports:
+      - "8001:8000"
+    networks:
+      - web
+
+  memo-api:
+    build:
+      context: ./memo-api
+    container_name: memo-api
+    ports:
+      - "8002:8000"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
