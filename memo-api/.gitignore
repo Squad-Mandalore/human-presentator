@@ -178,3 +178,5 @@ cython_debug/
 # Custom
 outputs/*
 checkpoints/*
+audio_*
+pricture_*
