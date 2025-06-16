@@ -19,5 +19,6 @@ COPY main.py ./
 COPY /src ./src/
 
 ENV PATH="/app/.venv/bin:$PATH"
+ENV PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

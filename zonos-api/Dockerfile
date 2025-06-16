@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends git ca-certificates build-essential python3-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# memo dependencies
+# zonos dependencies
 RUN apt-get update \
  && apt-get install -y --no-install-recommends espeak-ng \
  && rm -rf /var/lib/apt/lists/*
