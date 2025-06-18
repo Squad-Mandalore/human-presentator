@@ -1,4 +1,16 @@
 services:
+  presentor-vue:
+    build:
+      context: ./presentor-vue
+      args:
+        - VITE_ZONOS_API_URL=http://localhost:8001
+        - VITE_MEMO_API_URL=http://localhost:8002
+    container_name: presentor-vue
+    ports:
+      - "80:80"
+    networks:
+      - web
+
   zonos-api:
     build:
       context: ./zonos-api

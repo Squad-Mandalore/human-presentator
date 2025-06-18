@@ -102,14 +102,14 @@ const props = defineProps<Props>()
 const baseUrl = import.meta.env.VITE_MEMO_API_URL
 
 const inputMethod = ref('camera')
-const videoEl = ref(null)
-const photoBlob = ref(null)
-const photoUrl = ref(null)
+const videoEl = ref<HTMLVideoElement | null>(null)
+const photoBlob = ref<Blob | null>(null)
+const photoUrl = ref<string | null>(null)
 const photoCaptured = ref(false)
 const loading = ref(false)
-const videoUrl = ref(null)
-const fileInput = ref(null)
-const currentStream = ref(null)
+const videoUrl = ref<string | null>(null)
+const fileInput = ref<HTMLInputElement | null>(null)
+const currentStream = ref<MediaStream | null>(null)
 
 // Camera management functions
 async function startCamera() {
@@ -126,7 +126,7 @@ async function startCamera() {
 
 function stopCamera() {
   if (currentStream.value) {
-    currentStream.value.getTracks().forEach(track => track.stop())
+    currentStream.value.getTracks().forEach((track: MediaStreamTrack) => track.stop())
     currentStream.value = null
   }
   if (videoEl.value) {
@@ -162,6 +162,7 @@ function capturePhoto() {
   
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
+  if (!ctx) return
   
   // Calculate square dimensions (minimum of width/height)
   const squareSize = Math.min(video.videoWidth, video.videoHeight)
@@ -180,9 +181,11 @@ function capturePhoto() {
   )
   
   canvas.toBlob(blob => {
-    photoBlob.value = blob
-    photoUrl.value = URL.createObjectURL(blob)
-    photoCaptured.value = true
+    if (blob) {
+      photoBlob.value = blob
+      photoUrl.value = URL.createObjectURL(blob)
+      photoCaptured.value = true
+    }
   }, 'image/png')
 }
 
@@ -193,8 +196,8 @@ function retake() {
 }
 
 // file upload logic
-function handleImageUpload(event) {
-  const target = event.target
+function handleImageUpload(event: Event) {
+  const target = event.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
 
@@ -224,7 +227,9 @@ async function generateVideo() {
   
   const form = new FormData()
   form.append('audio_file', props.audioBlob, 'speech.wav')
-  form.append('picture', photoBlob.value, 'face.png')
+  if (photoBlob.value) {
+    form.append('picture', photoBlob.value, 'face.png')
+  }
 
   const resp = await fetch(`${baseUrl}/memo/`, {
     method: 'POST',
