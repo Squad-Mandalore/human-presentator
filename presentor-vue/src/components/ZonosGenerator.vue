@@ -1,9 +1,34 @@
 <template>
-  <div class="p-6 border rounded-lg shadow-lg space-y-4">
-    <h2 class="text-2xl font-semibold">1. Generate Speech</h2>
+  <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-6">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+      <h2 class="text-2xl font-semibold text-gray-800">Generate Speech</h2>
+    </div>
+
+    <!-- Method selection -->
+    <div class="flex space-x-4 mb-4">
+      <label class="flex items-center">
+        <input 
+          type="radio" 
+          v-model="inputMethod" 
+          value="record"
+          class="mr-2"
+        />
+        Record from microphone
+      </label>
+      <label class="flex items-center">
+        <input 
+          type="radio" 
+          v-model="inputMethod" 
+          value="upload"
+          class="mr-2"
+        />
+        Upload audio file
+      </label>
+    </div>
 
     <!-- Recording controls -->
-    <div class="space-x-2">
+    <div v-if="inputMethod === 'record'" class="space-x-2">
       <button
         class="px-4 py-2 bg-red-600 text-white rounded"
         @click="startRecording"
@@ -17,7 +42,23 @@
       <span v-if="recording" class="text-red-500 font-medium">● Recording…</span>
     </div>
 
-    <!-- Preview recorded sample -->
+    <!-- File upload -->
+    <div v-if="inputMethod === 'upload'" class="space-y-2">
+      <input
+        ref="fileInput"
+        type="file"
+        accept="audio/*"
+        @change="handleFileUpload"
+        class="block w-full text-sm text-gray-500
+               file:mr-4 file:py-2 file:px-4
+               file:rounded-full file:border-0
+               file:text-sm file:font-semibold
+               file:bg-blue-50 file:text-blue-700
+               hover:file:bg-blue-100"
+      />
+    </div>
+
+    <!-- Preview sample -->
     <audio
       v-if="sampleUrl"
       :src="sampleUrl"
@@ -65,11 +106,13 @@
 import { ref } from 'vue'
 
 /** ——— State with explicit types ——— **/
+const inputMethod    = ref<string>('record')
 const recording      = ref<boolean>(false)
 const recorder       = ref<MediaRecorder|null>(null)
 const chunks         = ref<Blob[]>([])
 const sampleBlob     = ref<Blob|null>(null)
 const sampleUrl      = ref<string|null>(null)
+const fileInput      = ref<HTMLInputElement|null>(null)
 
 const text           = ref<string>('')
 const language       = ref<string>('en-us')
@@ -114,6 +157,16 @@ function stopRecording(): void {
   if (!recorder.value) return
   recorder.value.stop()
   recording.value = false
+}
+
+/** ——— File upload logic ——— **/
+function handleFileUpload(event: Event): void {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (!file) return
+
+  sampleBlob.value = file
+  sampleUrl.value = URL.createObjectURL(file)
 }
 
 /** ——— Zonos API call ——— **/

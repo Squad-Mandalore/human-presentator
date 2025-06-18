@@ -7,10 +7,11 @@ services:
       - "8001:8000"
     networks:
       - web
-    runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    # activate if you have enough VRAM (20 GB were not enough for me)
+    # runtime: nvidia
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all
+    #   - NVIDIA_DRIVER_CAPABILITIES=compute,utility
 
   memo-api:
     build:
