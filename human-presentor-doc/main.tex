@@ -1,0 +1,65 @@
+\documentclass[12pt, headheight=21.8pt, footheight=21.8pt, oneside]{scrbook}
+\linespread{1.5}     \bibliographystyle{abbrvdin}                                   % Zeilenabstand; Literaturverzeichnis-Style
+\addtocontents{toc}{\protect\thispagestyle{empty}}                                  % Seitenzahl auf Inhaltsverzeichnis verhindern
+\usepackage[ngerman]{babel}     \usepackage[utf8]{inputenc}				            % Sprache; Umlaute
+\usepackage{scrlayer-scrpage} 	\cfoot[]{}      \ofoot[\pagemark]{\pagemark} 		% Fußzeilenlayout: center frei, rechts/links pagemark
+\usepackage{hyperref}		\usepackage{graphicx}			                        % Links ( zu Kapiteln ); Bilder
+\usepackage{enumitem}       \setlist{itemsep=-1pt}                                  % Liste mit definierbarem Zeilenabstand
+\usepackage[most]{tcolorbox}                                                        % Box
+\usepackage{minted}     \setminted{fontsize=\small, baselinestretch=1.0, tabsize=3, breaklines=true,escapeinside=??}    % Codeformatierung
+\usepackage{pdfpages}
+\graphicspath{{images/}} % Bilder in diesem Verzeichnis suchen
+\setkeys{Gin}{width=\columnwidth} % Breite für alle Bilder gleich
+
+\title{Human Presentor - Dokumentation}
+\author{Markus Sieger (DXXX) \and Lucas Buchholz (D484)}
+\date{Juli 2025}
+\subject{New Trends in IT, 6. Semester}
+\titlehead{Provadis School of International Management and Technology AG}
+\publishers{\large
+\textbf{Zusammenfassung}\\
+Diese Arbeit beschreibt die Entwicklung eines
+Präsentationswerkzeugs, das es ermöglicht, Präsentationen als KI-generierte Person zu erstellen.
+}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagestyle{empty}
+
+
+
+\chapter{Einleitung} \pagestyle{headings}
+
+
+\chapter{Dokumentation}
+
+
+\chapter{Zusammenfassung}
+
+
+\bibliography{Literaturverzeichnis}
+
+
+
+\chapter{Eigenständigkeitserklärung}
+Hiermit bestätige ich, dass ich die vorliegende Arbeit 
+selbständig verfasst und keine anderen als die 
+angegebenen Quellen und Hilfsmittel verwendet habe. 
+Alle Stellen, die wörtlich oder sinngemäß anderen 
+Quellen entnommen wurden, sind als solche kenntlich 
+gemacht. Die Zeichnungen, Abbildungen und Tabellen in 
+dieser Arbeit sind von mir selbst erstellt oder wurden mit 
+einem entsprechenden Quellennachweis versehen.
+
+Datum, Unterschrift:
+
+
+
+
+\appendix
+
+\chapter{Anhang}
+
+\end{document}
