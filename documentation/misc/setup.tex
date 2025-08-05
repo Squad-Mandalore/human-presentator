@@ -1,0 +1,140 @@
+% Language & Encoding
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+% Font & Math
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareUnicodeCharacter{0394}{$\Delta$}% Δ U+0394
+
+% Page Layout
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=2cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{emptypage} % suppress header and footer on empty pages
+\usepackage[parfill]{parskip} % on blank line do a new paragraph
+
+% Formatting
+\usepackage{titlesec}
+\usepackage[format=plain,labelfont=bf]{caption}
+
+% Header & Footer
+\usepackage{fancyhdr}
+
+% H specifier
+\usepackage{float}
+
+% Images
+\usepackage{graphicx}
+\usepackage{calc}
+\graphicspath{{images/}}
+
+% Quotation
+\usepackage{csquotes}
+
+% Source Code highlighting
+\usepackage{minted}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+% Landscape pages
+\usepackage{pdflscape}
+\usepackage{lscape}
+
+% Lists
+\usepackage{enumitem}
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{literatur.bib}
+
+% Glossaries & Acronyms
+\usepackage[acronym,toc]{glossaries}
+
+\newcommand{\changefontbig}{\fontsize{10}{12}\selectfont}
+
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\widowpenalty = 4500
+\clubpenalty = 4500
+
+\addto\extrasenglish{\def
+\subsubsectionautorefname{Section}
+}
+
+\titleformat{\section}
+  {\fontsize{14}{16}\selectfont\bfseries\setstretch{1}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\fontsize{12}{14}\selectfont\bfseries\setstretch{1}}
+  {\thesubsection}{1em}{}
+
+% Set the spacing before (18pt) and after (9pt) the section title:
+\titlespacing*{\section}{0pt}{18pt}{9pt}
+
+\makeatletter
+% Define a flag and helper command to set it and write to the aux file.
+\newif\ifappendix
+\appendixfalse % default: no appendix
+
+\newcommand{\setappendixflag}{%
+  \global\appendixtrue
+  % Write a definition to the aux file so that on the next run the flag is set.
+  \immediate\write\@auxout{\string\gdef\string\@hasappendix{true}}%
+}
+
+% At the beginning of the document (or in the preamble), check for the aux flag.
+\AtBeginDocument{%
+  \@ifundefined{@hasappendix}{}{%
+    \appendixtrue
+  }%
+}
+
+% Save the original \appendix command and redefine it.
+\let\oldappendix\appendix
+\renewcommand{\appendix}{%
+  \oldappendix% Call the original \appendix
+  \setappendixflag% Set our flag and write to the aux file
+}
+
+%Aufsplittung Inhalts und Anhangsverzeichnis
+\newcommand*{\maintoc}{% Hauptinhaltsverzeichnis
+  \begingroup
+    \ifappendix
+      \@fileswfalse% kein neues Verzeichnis öffnen
+    \fi
+    \renewcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+      \value{tocdepth}=-10000 % lokal tocdepth auf sehr kleinen Wert setzen
+    }%
+    \tableofcontents% Verzeichnis ausgeben
+  \endgroup
+}
+\newcommand*{\appendixtoc}{% Anhangsinhaltsverzeichnis
+  \begingroup
+    \edef\@alltocdepth{\the\value{tocdepth}}% tocdepth merken
+    \setcounter{tocdepth}{-10000}% Keine Verzeichniseinträge
+    % \renewcommand*{\contentsname}{% Verzeichnisname ändern
+    %   Anhangsverzeichnis}%
+    \renewcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+      \setcounter{tocdepth}{\@alltocdepth}% tocdepth wiederherstellen
+    }%
+    \tableofcontents% Verzeichnis ausgeben
+    \setcounter{tocdepth}{\@alltocdepth}% tocdepth wiederherstellen
+  \endgroup
+}
+\newcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+}
+\g@addto@macro\appendix{% \appendix erweitern
+  \clearpage% Neue Seite
+  \phantomsection
+  \addcontentsline{toc}{section}{\appendixname}% Eintrag ins Hauptverzeichnis
+  \addtocontents{toc}{\protect\appendixattoc}% Trennanweisung in die toc-Datei
+}
+\makeatother

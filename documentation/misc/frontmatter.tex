@@ -1,0 +1,34 @@
+\maketitle
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{3}
+\pagestyle{fancy}
+\fancyhf{}
+
+\setlength{\headheight}{18pt}
+\fancyhead[L]{\changefontbig\nouppercase{\textit{\leftmark}}}
+\fancyhead[R]{\changefontbig\thepage}
+
+\maintoc
+\clearpage
+
+\phantomsection
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+\clearpage
+
+\phantomsection
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\clearpage
+
+\phantomsection
+\listoflistings
+\addcontentsline{toc}{section}{List of Listings}
+\clearpage
+
+\printglossary[type=\acronymtype, nonumberlist, style=long]
+\setcounter{table}{0}
+\cleardoublepage
+
+\pagenumbering{arabic}

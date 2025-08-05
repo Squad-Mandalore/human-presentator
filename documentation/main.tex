@@ -1,0 +1,31 @@
+% arara: mkdir: { target: 'output' }
+% arara: make: { targets: ['images/architecture.png'] }
+% arara: pdflatex: { options: ['-shell-escape', '-output-directory=output'] }
+% arara: biber: { options: ['--wraplines', '--output-directory=output'] }
+% arara: makeglossaries: { options: ['-d', 'output'] }
+% arara: pdflatex: { options: ['-shell-escape', '-output-directory=output'] }
+% arara: pdflatex: { options: ['-shell-escape', '-output-directory=output'] }
+% arara: move: { files: ['output/main.pdf'], target: 'cookbook.pdf' }
+\documentclass[a4paper,12pt,twoside]{article}
+\raggedbottom
+\input{misc/setup}
+\input{misc/settings}
+\input{misc/acronyms}
+
+\input{misc/titlepage}
+
+\begin{document}
+\input{misc/frontmatter}
+
+\input{sec/introduction}
+\input{sec/methodology}
+\input{sec/results}
+\input{sec/discussion}
+
+\cleardoublepage
+
+\input{misc/backmatter}
+
+\input{misc/appendix}
+
+\end{document}
