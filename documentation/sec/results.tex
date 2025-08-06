@@ -1,3 +1,40 @@
 % How the actual implementation was done
 \section{Results}
-Results are very important.
+
+The implementation of the human-presentator project deviated significantly from the initially
+planned monolithic approach described in the methodology section. During development, several
+technical constraints and compatibility issues necessitated a fundamental architectural redesign
+that resulted in a modular, service-oriented system.
+
+The most significant change from the original methodology was the transition from a single-script
+Python application to a distributed 'microservice' like architecture. This shift was primarily driven by
+Python version incompatibilities between the core dependencies, specifically Zonos for voice
+synthesis and Memo for face animation. Rather than attempting to reconcile these version conflicts
+within a monolithic structure, the implementation adopted a containerized approach using Docker
+Compose to isolate each service in its own environment with appropriate Python versions and
+dependencies.
+
+The final implementation consists of three primary services: a Vue.js frontend (presentor-vue)
+serving as the user interface, a Zonos API service for voice recognition and synthesis running on
+port 8001, and a Memo API service for face animation processing on port 8002. This modular
+architecture allows each component to operate independently while maintaining clear communication
+channels through RESTful APIs.
+
+A critical implementation decision involved forking both the Zonos and Memo projects to adapt their
+system APIs for the specific requirements of the human-presentator use case. The original Zonos and
+memo implementation was modified to better integrate with the distributed architecture. The Memo
+fork in particular was adapted to try optimize face animation processing but without real
+achievements.
+
+The containerization strategy employed Docker with NVIDIA GPU runtime support to leverage hardware
+acceleration for the computationally intensive AI operations. The memo-api service specifically
+utilizes NVIDIA CUDA capabilities for face animation processing, while the zonos-api service can
+optionally leverage GPU acceleration when sufficient VRAM is available. As for now it is disabled
+because it then would take up to 32GB VRAM.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth, keepaspectratio]{architecture.png}
+  \caption{Architecture of the Human Presentor}
+  \label{fig:architecture}
+\end{figure}

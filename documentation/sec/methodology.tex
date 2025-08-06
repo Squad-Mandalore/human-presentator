@@ -1,11 +1,25 @@
 % Architecture planning | How the application was planned to implement
 
 \section{Methodology}
-This is a Methodology.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth, keepaspectratio]{architecture.png}
-  \caption{Architecture of the Human Presentor}
-  \label{fig:architecture}
-\end{figure}
+The human-presentator project was initially conceived as a streamlined, single-script Python
+application designed to generate talking-head animations from static images and text input. The
+original approach emphasized simplicity and cohesion, with all functionality consolidated into one
+comprehensive Python script that would handle the entire pipeline from text input to final video
+output.
+
+Rather than developing proprietary solutions from scratch, the project methodology centered on
+leveraging established open-source software for the core voice generation and image animation
+components. This approach was chosen to reduce development time by building upon proven, well-tested
+codebases, ensure compatibility with existing workflows and standards and maintain transparency and
+auditability through open-source implementations.
+
+An integral component of the original methodology included implementing automated validation
+mechanisms for the generated MP4 output files. The automated validation approach aimed to ensure
+consistent output quality while reducing manual review overhead during the development and testing
+phases.
+
+The initial architectural approach emphasized a monolithic design pattern, consolidating all
+processing stages within a single executable unit. This methodology was selected to minimize
+deployment complexity, reduce inter-component communication overhead, and provide a clear, linear
+processing flow that could be easily understood and modified by developers working on the project.

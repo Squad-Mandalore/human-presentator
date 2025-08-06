@@ -1,6 +1,31 @@
 % Relevance and what alternatives there are
 \section{Introduction}
 
-Hello this is the Introduction.\autocite{DTInternal2025}
+This cookbook presents a fully local pipeline for generating talking-head animations from static
+images and arbitrary text, leveraging \gls{Zonos} for voice cloning and text-to-speech and
+\gls{memo} for precise lip-synchronization. Designed to run entirely on your own hardware, this
+application ensures data privacy, offline functionality, and the flexibility to customize every
+component.
 
-Some parts of this document is tailored to the \gls{DTIT}.
+In today’s media landscape, immersive and personalized audiovisual content drives engagement across
+educational platforms, virtual assistants, and marketing campaigns. By combining high-fidelity voice
+cloning with accurate mouth animation, creators can produce dynamic videos without relying on cloud
+services or external APIs. This guide walks you through setting up the environment, preparing your
+data, and executing each stage of the pipeline, from extracting a speaker’s voice characteristics to
+animating a still image’s mouth movements to match the synthesized speech.
+
+At the core of this pipeline are two specialized tools: \gls{Zonos} and \gls{memo}. \gls{Zonos}
+provides an end-to-end solution for voice cloning and speech synthesis, enabling you to input a
+short audio sample and generate natural-sounding speech for any text. \gls{memo} handles the visual
+side, mapping the generated audio waveform onto a static image to produce lipid-accurate mouth
+movements. You’ll find detailed instructions for installing dependencies, configuring models, and
+running inference scripts, alongside code snippets and troubleshooting advice.
+
+While several open-source and commercial solutions address parts of this workflow, most depend on
+cloud infrastructure or separate services. Projects like Real-Time-Voice-Cloning and Mozilla TTS
+excel at local voice synthesis, and Wav2Lip and SyncNet offer speaker-agnostic lip-sync
+capabilities. Commercial tools such as Adobe Character Animator or CrazyTalk let users animate
+images without code, whereas platforms like Synthesia and D-ID provide end-to-end video creation
+online. This cookbook demystifies the underlying algorithms, empowering you to implement a cohesive,
+offline solution that you can extend for research or production purposes.
+

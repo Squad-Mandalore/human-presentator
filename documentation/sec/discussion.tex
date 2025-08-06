@@ -1,3 +1,41 @@
 % How useable is the implementation for the user and how to use it anyways
 \section{Discussion}
-And finally a Discussion.
+
+The Human Presenter Generator represents a sophisticated pipeline for creating realistic
+talking-head animations, combining \gls{Zonos} for voice synthesis and \gls{memo} for facial
+animation. While technically impressive, the system's practical usability presents both
+opportunities and significant challenges for end users.
+
+From a usability perspective, the application provides an intuitive two-step workflow through its
+Vue.js-based web interface. Users begin by either recording voice samples directly through their
+microphone or uploading existing audio files to the \gls{Zonos} component. The interface guides
+users through entering the desired text and language parameters before generating synthetic speech.
+Subsequently, the \gls{memo} component allows users to capture face images via webcam or upload
+static photographs, which are then animated to match the generated audio. This streamlined approach
+makes the complex underlying technology accessible to non-technical users through clear visual
+feedback and straightforward controls.
+
+However, the system's hardware requirements pose substantial barriers to widespread adoption. The
+implementation demands significant computational resources, particularly GPU memory, with the
+documentation indicating that even systems with 20GB of VRAM proved insufficient for running both
+\gls{Zonos} and \gls{memo} simultaneously. The Docker configuration reveals that while the
+\gls{memo} component requires NVIDIA GPU acceleration for acceptable performance, the \gls{Zonos}
+service had to be configured to run without GPU acceleration due to memory constraints. This
+hardware limitation forces users to either invest in high-end graphics hardware or accept
+significantly degraded performance, making the system impractical for typical consumer hardware
+configurations.
+
+The application's architecture, built around separate FastAPI microservices for each AI component
+and a Vue.js frontend, demonstrates good separation of concerns but introduces additional complexity
+for deployment and maintenance. Users must manage multiple Docker containers and ensure proper GPU
+    driver integration through the NVIDIA Container Toolkit. The reliance on local processing, while
+    ensuring privacy and offline functionality, places the entire computational burden on the user's
+    system rather than distributing it across cloud infrastructure.
+
+Despite these hardware challenges, the system offers valuable advantages for users with appropriate
+computational resources. The fully local processing ensures complete data privacy, as no voice
+samples or images are transmitted to external services. The modular architecture allows for
+customization and extension of individual components, making it suitable for research applications
+or specialized use cases. The continuous workflow from voice synthesis to facial animation within a
+single application eliminates the need for users to coordinate multiple separate tools and manual
+file transfers between processing stages.
