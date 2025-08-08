@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-content">
-      <p style="margin-top: 0" v-html="formattedFooterMessage"></p>
+      <p style="margin-top: 0; margin-bottom: 0;" v-html="formattedFooterMessage"></p>
     </div>
     <div class="page-number">
         <SlideCurrentNo />

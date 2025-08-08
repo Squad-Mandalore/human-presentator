@@ -23,15 +23,15 @@ src: ./pages/1-5timeline.md
 ---
 
 ---
-src: ./pages/2youtube-right-text-left.md
+src: ./pages/architecture.md
 ---
 
 ---
-src: ./pages/3text-right-image-left.md
+src: ./pages/zonos-hatsune.md
 ---
 
 ---
-src: ./pages/3-4radarchart.md
+src: ./pages/memo.md
 ---
 
 ---
