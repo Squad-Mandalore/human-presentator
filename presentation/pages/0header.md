@@ -1,6 +1,6 @@
-<h1>Title<br>subheadline<br>subheadline2</h1>
+<h1>Human Presentor<br>AI-Presentator with Zonos und Memo</h1>
 
-#### By Markus Siegert
+#### By Markus Siegert and Lucas Buchholz
 
 <style>
 h1 {

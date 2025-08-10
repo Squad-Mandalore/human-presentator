@@ -1,6 +1,6 @@
 ---
 theme: seriph
-background: dev-ops.png
+# background: dev-ops.png
 # title: Some random title
 # info: |
 #  Idk bro

@@ -1,10 +1,7 @@
-# Mittelfristige Ziele
+# Discussion
 
 <ul>
-  <li>Übernahme in eine verantwortungsvolle Position</li>
-  <li>Weiterführendes Master-Studium</li>
-  <li>Open Source contributing</li>
-  <li>Ständige Verbesserung meiner Fähigkeiten und Kenntnisse</li>
+  <li>EndCard Placeholder, what to write in the end?</li>
 </ul>
 <div v-click="1">
   <div class="important">

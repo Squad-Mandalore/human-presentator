@@ -1,3 +1,3 @@
-# Timeline
+# Introduction
 
 <Timeline />
