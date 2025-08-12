@@ -99,6 +99,40 @@
         class="inline-block mt-1 px-4 py-2 bg-green-600 text-white rounded"
       >Download WAV</a>
     </div>
+
+    <!-- OR divider -->
+    <div class="flex items-center space-x-4 my-6">
+      <div class="flex-1 border-t border-gray-300"></div>
+      <span class="text-gray-500 font-medium">OR</span>
+      <div class="flex-1 border-t border-gray-300"></div>
+    </div>
+
+    <!-- Upload Final Audio Section -->
+    <div class="p-4 border border-gray-200 rounded-lg bg-blue-50">
+      <h3 class="font-medium text-gray-700 mb-3">Upload Your Own Audio File</h3>
+      <input
+        ref="finalAudioInput"
+        type="file"
+        accept="audio/wav,audio/mp3,audio/*"
+        @change="handleFinalAudioUpload"
+        class="block w-full text-sm text-gray-500
+               file:mr-4 file:py-2 file:px-4
+               file:rounded-full file:border-0
+               file:text-sm file:font-semibold
+               file:bg-blue-100 file:text-blue-700
+               hover:file:bg-blue-200"
+      />
+      <p class="text-xs text-gray-600 mt-1">Upload a WAV or MP3 file to animate directly</p>
+      
+      <!-- Preview uploaded final audio -->
+      <div v-if="finalAudioUrl" class="mt-3 space-y-2">
+        <audio :src="finalAudioUrl" controls class="w-full"></audio>
+        <button
+          class="px-3 py-1 bg-gray-300 text-gray-700 rounded text-sm"
+          @click="clearFinalAudio"
+        >Clear</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -113,6 +147,10 @@ const chunks         = ref<Blob[]>([])
 const sampleBlob     = ref<Blob|null>(null)
 const sampleUrl      = ref<string|null>(null)
 const fileInput      = ref<HTMLInputElement|null>(null)
+
+const finalAudioBlob = ref<Blob|null>(null)
+const finalAudioUrl  = ref<string|null>(null)
+const finalAudioInput = ref<HTMLInputElement|null>(null)
 
 const text           = ref<string>('')
 const language       = ref<string>('en-us')
@@ -167,6 +205,30 @@ function handleFileUpload(event: Event): void {
 
   sampleBlob.value = file
   sampleUrl.value = URL.createObjectURL(file)
+}
+
+/** ——— Final audio upload logic ——— **/
+function handleFinalAudioUpload(event: Event): void {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (!file) return
+
+  finalAudioBlob.value = file
+  finalAudioUrl.value = URL.createObjectURL(file)
+  
+  // Emit this audio directly to parent for animation
+  emit('audio-generated', file)
+}
+
+function clearFinalAudio(): void {
+  finalAudioBlob.value = null
+  if (finalAudioUrl.value) {
+    URL.revokeObjectURL(finalAudioUrl.value)
+    finalAudioUrl.value = null
+  }
+  if (finalAudioInput.value) {
+    finalAudioInput.value.value = ''
+  }
 }
 
 /** ——— Zonos API call ——— **/
