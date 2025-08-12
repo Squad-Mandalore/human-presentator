@@ -35,5 +35,10 @@ src: ./pages/memo.md
 ---
 
 ---
+src: ./pages/livedemo.md
+transition: nothing
+---
+
+---
 src: ./pages/4endcard.md
 ---

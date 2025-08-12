@@ -1,4 +1,4 @@
-<h1>Human Presentor<br>AI-Presentator with Zonos und Memo</h1>
+<h1>Human Presentator<br>AI-Presentator with Zonos und Memo</h1>
 
 #### By Markus Siegert and Lucas Buchholz
 

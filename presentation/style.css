@@ -9,3 +9,14 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+.nothing-enter-active,
+.nothing-leave-active {
+  transition: opacity 1;
+}
+
+.nothing-enter-from,
+.nothing-leave-to {
+  opacity: 0;
+}
+
