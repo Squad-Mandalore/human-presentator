@@ -2,60 +2,60 @@
   <v-timeline style="grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)" direction="horizontal">
     <v-timeline-item
       class="mx-auto"
-      dot-color="#187B3C"
+      dot-color="#FFD700"
     >
       <template v-slot:opposite>
-        <div class="text-h6">Praktikum 2018</div>
+        <div class="text-h6">Ideation</div>
         <p>
-          Erstes mal eine Vision von Teamwork im Arbeitsumfeld. Website Programmierung.
+          Initial concept development and brainstorming phase.
         </p>
       </template>
       <div>
-        <strong>Performics Germany GmbH</strong>
+        <strong>Planning & Design</strong>
       </div>
     </v-timeline-item>
 
     <v-timeline-item
       class="mx-auto"
-      dot-color="#96131B"
+      dot-color="#ED8B00"
     >
       <template v-slot:opposite>
-        <strong>OSZ IMT</strong>
+        <strong>Single Codebase</strong>
       </template>
       <div>
-        <div class="text-h6">Abitur mit IT Leistungskurs 2019-2022</div>
+        <div class="text-h6">Monolithic implementation</div>
         <p>
-          Erste Erfahrungen mit Java. Leidenschaft entfacht.
+          All-in-one application structure with tightly coupled components.
         </p>
       </div>
     </v-timeline-item>
 
     <v-timeline-item
       class="mx-auto"
-      dot-color="#E20074"
+      dot-color="#3776AB"
     >
       <template v-slot:opposite>
-        <div class="text-h6">Onboarding 2022-2024</div>
+        <div class="text-h6">API based implementation</div>
         <p>
-          Einführung in den Workflow eines Fullstack Engineers.
+          Decoupled architecture with REST APIs for data exchange.
         </p>
       </template>
       <div>
-        <strong>DTIT Gigabit + Studium</strong>
+        <strong>Backend Services</strong>
       </div>
     </v-timeline-item>
 
     <v-timeline-item
       class="mx-auto"
-      dot-color="#E20074"
+      dot-color="#42B883"
     >
       <template v-slot:opposite>
-        <strong>DTIT B2B Solutions API + Studium</strong>
+        <strong>User Interface</strong>
       </template>
       <div>
-        <div class="text-h6">Praktische Erfahrungen 2024-2025</div>
+        <div class="text-h6">Frontend implementation</div>
         <p>
-          Neue Einblicke und tiefere Erfahrung in DevOps Workflows.
+          Modern reactive frontend consuming API services.
         </p>
       </div>
     </v-timeline-item>
@@ -63,6 +63,7 @@
 </template>
 
 <style>
+
 html:not(.dark) .v-timeline-divider__before, html:not(.dark) .v-timeline-divider__after {
   background: black;
 }
@@ -70,4 +71,13 @@ html:not(.dark) .v-timeline-divider__before, html:not(.dark) .v-timeline-divider
 html.dark .v-timeline-divider__before, html.dark .v-timeline-divider__after {
   background: white;
 }
+
+html:not(.dark) .v-timeline .v-timeline-divider__dot {
+  background: #333333 !important;
+}
+
+.v-timeline-item .v-timeline-divider__dot {
+  background: #333333 !important;
+}
+
 </style>
