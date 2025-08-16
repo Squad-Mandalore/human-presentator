@@ -40,7 +40,7 @@ function onAudioGenerated(blob: Blob) {
       </div>
 
       <footer class="text-center text-sm text-gray-500 pt-8 border-t">
-        <p>Powered by Zonos (voice synthesis) + Memo (face animation)</p>
+        <p>Powered by <a href="https://github.com/Zyphra/Zonos">Zonos (voice synthesis) </a> +  <a href="https://github.com/memoavatar/memo"> Memo (face animation)</a></p>
       </footer>
     </div>
   </div>
