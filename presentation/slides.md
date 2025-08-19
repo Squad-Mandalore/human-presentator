@@ -31,6 +31,10 @@ src: ./pages/architecture.md
 ---
 
 ---
+src: ./pages/vram-survey.md
+---
+
+---
 src: ./pages/zonos-hatsune.md
 ---
 
