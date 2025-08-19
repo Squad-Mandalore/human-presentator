@@ -1,12 +1,18 @@
 # Discussion
 
 <div class="grid grid-cols-[50%_50%] gap-4" style="height: 85%;">
-  <ul class>
-    <li>State of the Art Technologies -> Zyphra/Zonos Research 2024</li>
-    <li>Local: Without dependency on commercial sources (ChatGPT, Veo-3) with Prerequitsite of high computing capacities</li>
-    <li>Training with own choosen voice or generation with character picture</li>
+  <ul>
+    <li>State of the Art Technologies
+    <ul>
+      <li>Zyphra/Zonos 2025</li>
+      <li>Memoavatar/Memo 2024</li>
+    </ul>
+    </li>
+    <li>Not dependent on commercial sources, but high computing capacity is a prerequisite</li>
+    <li>Training with own voices and generation with character picture</li>
+    <li>In Comparison Open-Source AI models are undoubtedly improving and reaching peak performance.</li>
   </ul>
-  <div class="w-64 mx-auto">
+  <div class="w-64 mx-auto" v-click="1">
   <video width="200" height="100" autoplay loop muted controls>
       <source src="/old_will_spagett.webm" type="video/webm">
   </video>
