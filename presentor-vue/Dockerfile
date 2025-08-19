@@ -24,7 +24,7 @@ ENV VITE_MEMO_API_URL=$VITE_MEMO_API_URL
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine
+FROM docker.io/nginx:alpine
 
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html

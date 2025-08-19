@@ -105,7 +105,7 @@ watch(jump, async (isOn) => {
       opacity: 0,
       duration: 0.3,
       onStart: () => {
-        window.open('http://localhost', '_blank')
+        window.open('http://localhost:8000', '_blank')
         nav.nextSlide()
       },
       onComplete: () => {

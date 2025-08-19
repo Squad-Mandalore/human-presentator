@@ -7,7 +7,7 @@ services:
         - VITE_MEMO_API_URL=http://localhost:8002
     container_name: presentor-vue
     ports:
-      - "80:80"
+      - "8000:80"
     networks:
       - web
 
@@ -33,7 +33,9 @@ services:
       - "8002:8000"
     networks:
       - web
-    runtime: nvidia
+    devices:
+      - "nvidia.com/gpu=all"
+    gpus: all
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
