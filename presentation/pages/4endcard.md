@@ -34,16 +34,23 @@
 ---
 ---
 
+<div class="h-full flex flex-col">
+
 # End
-<div v-click="1">
-  <div class="important">
-    <span style="color: red;">T</span>
-    <span style="color: orange;">h</span>
-    <span style="color: yellow;">a</span>
-    <span style="color: green;">n</span>
-    <span style="color: blue;">k</span>
-    <span style="color: indigo;">s</span>
-    <span style="color: violet;">!</span>
+  <div class="flex flex-1 flex-col mb-8">
+    <div class="flex flex-1 items-center justify-center relative">
+      <div v-click="1">
+        <div class="important">
+          <span style="color: red;">T</span>
+          <span style="color: orange;">h</span>
+          <span style="color: yellow;">a</span>
+          <span style="color: green;">n</span>
+          <span style="color: blue;">k</span>
+          <span style="color: indigo;">s</span>
+          <span style="color: violet;">!</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

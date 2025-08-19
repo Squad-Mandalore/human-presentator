@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 22rem;">
     <Bar :data="chartConfig.data" :options="chartConfig.options" />
   </div>
 </template>
