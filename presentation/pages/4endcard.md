@@ -13,13 +13,20 @@
     <li>In Comparison Open-Source AI models are undoubtedly improving and reaching peak performance.</li>
   </ul>
   <div class="w-64 mx-auto" v-click="1">
-  <video width="200" height="100" autoplay loop muted controls>
+  <figure class="flex flex-col items-center">
+    <video width="200" height="100" autoplay loop muted controls>
       <source src="/old_will_spagett.webm" type="video/webm">
-  </video>
-  <video width="200" height="100" autoplay loop muted controls>
+    </video>
+    <figcaption class="text-center text-sm mt-1">Stable Diffusion: Will Smith eating Spaghetti (March 2023)</figcaption>
+  </figure>
+
+  <figure class="flex flex-col items-center">
+    <video width="200" height="100" autoplay loop muted controls>
       <source src="/veo_will_spagett.webm" type="video/webm">
-  </video>
-  </div>
+    </video>
+    <figcaption class="text-center text-sm mt-1">Google Veo 3: Will Smith eating Spaghetti (May 2025)</figcaption>
+  </figure>
+</div>
 </div>
 
 <Footer />
