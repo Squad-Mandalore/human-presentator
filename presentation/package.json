@@ -10,7 +10,7 @@
     "build-and-start": "npm run build && npm run start"
   },
   "dependencies": {
-    "@slidev/cli": "^52.0.0",
+    "@slidev/cli": "^52.1.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "chart.js": "^4.5.0",
@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "http-server": "^14.1.1",
-    "playwright-chromium": "^1.54.1"
+    "playwright-chromium": "^1.55.0"
   }
 }
